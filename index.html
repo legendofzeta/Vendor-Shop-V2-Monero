@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vendor Shop</title>
+  <style>
+    /* Add some padding to the elements */
+    .product {
+      padding: 30px;
+      background-color: #1F1F1F;
+      color: #FFFFFF;
+    }
+    #nowpayments-button {
+      padding: 15px;
+      background-color: #00FF00;
+      color: #000000;
+      font-size: 20px;
+      border-radius: 25px;
+      border: none;
+    }
+    /* Center the content of the website */
+    .product-list {
+      display: flex;
+      justify-content: center;
+    }
+    /* Add some styling to the title */
+    h1 {
+      text-align: center;
+      color: #00FF00;
+      font-size: 40px;
+    }
+    /* Add a background image */
+    body {
+      background-image: url("bg.jpg");
+      background-size: cover;
+    }
+    /* Center the PGP key and add padding */
+    .pgp-key {
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Vendor Shop</h1>
+  <div class="product-list">
+    <div class="product">
+      <img src="product1.jpg" alt="Product 1">
+      <h2>Product 1</h2>
+      <p>Description: This is a sample product.</p>
+      <p>Price: 0.1 XMR</p>
+      <form action="https://nowpayments.io/checkout" method="post">
+        <input type="hidden" name="api_key" value="your_api_key">
+        <input type="hidden" name="amount
+<input type="hidden" name="amount" value="0.1">
+<input type="hidden" name="currency" value="XMR">
+<input type="hidden" name="order_id" value="product1">
+<input type="hidden" name="description" value="Product 1">
+<input type="submit" id="nowpayments-button" value="Buy">
+</form>
+</div>
+<div class="product">
+<img src="product2.jpg" alt="Product 2">
+<h2>Product 2</h2>
+<p>Description: This is another sample product.</p>
+<p>Price: 0.2 XMR</p>
+<form action="https://nowpayments.io/checkout" method="post">
+<input type="hidden" name="api_key" value="your_api_key">
+<input type="hidden" name="amount" value="0.2">
+<input type="hidden" name="currency" value="XMR">
+<input type="hidden" name="order_id" value="product2">
+<input type="hidden" name="description" value="Product 2">
+<input type="submit" id="nowpayments-button" value="Buy">
+</form>
+</div>
+  </div>
+<div>
+    <p style="text-align:center;">Please use the following PGP key for a secure checkout:</p>
+<div class="pgp-key" style="text-align:center;max-height:200px;overflow-y:auto;">
+    <pre>-----BEGIN PGP PUBLIC KEY BLOCK-----
+    [YOUR PGP KEY HERE]
+    -----END PGP PUBLIC KEY BLOCK-----</pre>
+</div>
+
+<script>
+//Add event listener to detect when the payment is confirmed
+document.addEventListener('NowPayments_payment_confirmed', function(e) {
+  // e.detail contains order_id, transaction_id and other details of the payment
+  var order_id = e.detail.order_id;
+  var transaction_id = e.detail.transaction_id;
+  // process your order here
+  console.log(`Order with id ${order_id} and transaction id ${transaction_id} was confirmed`);
+});
+ </script>
+</body>
+</html>
